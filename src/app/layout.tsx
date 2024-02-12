@@ -1,8 +1,21 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import { Navbar, type NavItem } from '@/ui/organisms/Navbar';
 
 const inter = Inter({ subsets: ['latin'] });
+
+const links: NavItem[] = [
+  {
+    href: '/',
+    label: 'Home',
+    exact: true,
+  },
+  {
+    href: '/products',
+    label: 'All',
+  },
+];
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,8 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pl">
+    <html lang="en">
       <body className={inter.className}>
+        <Navbar links={links} />
         <main className="container mx-auto mt-12 px-4">{children}</main>
       </body>
     </html>
