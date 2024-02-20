@@ -10,7 +10,7 @@ interface ProductItemProps {
 export function ProductListItem({ product }: ProductItemProps) {
   return (
     <li>
-      <Link href={`/products/${product.id}`}>
+      <Link href={`/product/${product.id}`}>
         <article>
           <ProductImage src={product.image} alt={product.title} />
           <ProductDescription product={product} />
