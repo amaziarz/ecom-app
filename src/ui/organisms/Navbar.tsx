@@ -7,7 +7,7 @@ export interface NavItem<T extends string = string> {
   exact?: boolean;
 }
 
-interface NavbarProps {
+export interface NavbarProps {
   links: NavItem[];
 }
 
@@ -17,7 +17,7 @@ export function Navbar({ links }: NavbarProps) {
       <ul className="flex">
         {links.map((link) => (
           <li key={link.href} className="mr-8">
-            <NavLink href={link.href} exact={link.exact}>
+            <NavLink href={link.href} exact={link.exact} className="text-lg">
               {link.label}
             </NavLink>
           </li>

@@ -6,15 +6,15 @@ interface ProductDescriptionProps {
 }
 
 export function ProductDescription({
-  product: { name, category, price },
+  product: { title, category, price },
 }: ProductDescriptionProps) {
   return (
-    <div className="px-4 py-4">
+    <div className="p-2">
       <div className="mb-1 flex justify-between">
-        <h3 className="text-xl font-medium">{name}</h3>
-        <p className="text-lg">{formatPrice(price / 100)}</p>
+        <h3 className="text-lg font-medium">{title}</h3>
+        <p className="text-base">{formatPrice(price)}</p>
       </div>
-      <p className="text-lg">{category}</p>
+      <p className="text-base">{category}</p>
     </div>
   );
 }
