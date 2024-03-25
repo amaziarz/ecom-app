@@ -1,0 +1,20 @@
+query ProductsGetList {
+  products(take: 10) {
+    data {
+      ...ProductListItem
+    }
+  }
+}
+
+fragment ProductListItem on Product {
+  id
+  name
+  price
+  description
+  categories {
+    name
+  }
+  images {
+    url
+  }
+}

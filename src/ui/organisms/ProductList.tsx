@@ -1,8 +1,8 @@
-import type { Product } from '@/types/Product';
 import { ProductListItem } from '@/ui/molecules/ProductListItem';
+import type { ProductsGetListQuery } from '@/gql/graphql';
 
 interface ProductListProps {
-  products: Product[];
+  products: ProductsGetListQuery['products']['data'];
 }
 
 export function ProductList({ products }: ProductListProps) {

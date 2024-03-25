@@ -1,18 +1,20 @@
 import Link from 'next/link';
-import type { Product } from '@/types/Product';
 import { ProductImage } from '@/ui/atoms/ProductImage';
 import { ProductDescription } from '@/ui/atoms/ProductDescription';
+import type { ProductListItemFragment } from '@/gql/graphql';
 
 interface ProductItemProps {
-  product: Product;
+  product: ProductListItemFragment;
 }
 
 export function ProductListItem({ product }: ProductItemProps) {
+  const [image] = product.images;
+
   return (
     <li>
       <Link href={`/product/${product.id}`}>
         <article>
-          <ProductImage src={product.image} alt={product.title} />
+          {image && <ProductImage src={image.url} alt={product.name} />}
           <ProductDescription product={product} />
         </article>
       </Link>

@@ -1,20 +1,22 @@
-import type { Product } from '@/types/Product';
 import { formatPrice } from '@/utils/formatPrice';
+import type { ProductListItemFragment } from '@/gql/graphql';
 
 interface ProductDescriptionProps {
-  product: Product;
+  product: ProductListItemFragment;
 }
 
 export function ProductDescription({
-  product: { title, category, price },
+  product: { name, categories, price },
 }: ProductDescriptionProps) {
+  const [category] = categories;
+
   return (
     <div className="p-2">
       <div className="mb-1 flex justify-between">
-        <h3 className="text-lg font-medium">{title}</h3>
+        <h3 className="text-lg font-medium">{name}</h3>
         <p className="text-base">{formatPrice(price)}</p>
       </div>
-      <p className="text-base">{category}</p>
+      {category && <p className="text-base">{category.name}</p>}
     </div>
   );
 }

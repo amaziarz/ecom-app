@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { getProductById, getProducts } from '@/api/products';
 import { ProductDetails } from '@/ui/molecules/ProductDetails';
 
@@ -11,10 +12,14 @@ interface ProductPageProps {
 export async function generateMetadata({
   params: { productId },
 }: ProductPageProps): Promise<Metadata> {
-  const { title, description } = await getProductById(productId);
+  const product = await getProductById(productId);
+  if (!product) {
+    notFound();
+  }
+  const { name, description } = product;
 
   return {
-    title,
+    title: name,
     description,
   };
 }
@@ -33,6 +38,9 @@ export default async function ProductDetailsPage({
   params: { productId },
 }: ProductPageProps) {
   const product = await getProductById(productId);
+  if (!product) {
+    notFound();
+  }
 
   return (
     <div className="mx-auto max-w-xs sm:max-w-3xl md:max-w-4xl">

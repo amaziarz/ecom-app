@@ -1,8 +1,8 @@
 import { redirect } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getProducts } from '@/api/products';
 import { ProductList } from '@/ui/organisms/ProductList';
 import { ProductListPagination } from '@/ui/organisms/ProductListPagination';
+import { getProducts } from '@/api/products';
 
 interface ProductsPageProps {
   params: {
